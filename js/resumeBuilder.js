@@ -47,3 +47,82 @@ var displayBio = function(){
 }
 displayBio();
 
+var displayEducation = function(){
+    "schools": [
+        {
+            "name": "Academy of Art University",
+            "location": "San Francisco, CA",
+            "degree": "Masters of Fine Arts",
+            "majors": ["Animation and Visual Effects"],
+            "dates": 2007,
+            "url": "www.academyofart.edu"
+        },
+        {
+            "name": "University of California",
+            "location": "Santa Barbara, CA",
+            "degree": "Bachelor of Arts",
+            "majors": ["Film Studies"],
+            "dates": 2004,
+            "url": "www.ucsb.edu"
+        },
+        {
+            "onlineCourses": [
+                {
+                    "title": "Front End Developer Nanodegree",
+                    "school": "Udacity",
+                    "date": 2015,
+                    "url": "www.udacity.com"
+                }
+            ]
+        }
+    ]
+}
+//displayEducation(); 
+
+
+var displayWork = function(){
+    "jobs": [
+        {
+            "employer": "Academy of Art University",
+            "title": "Adjunct Professor",
+            "location": "San Francisco, CA",
+            "dates": "2008 - current",
+            "description": "Teach compositing to graduate students"
+        },
+        {
+            "employer": "PDI/DreamWorks",
+            "title": "Lighter/Compositor",
+            "location": "Redwood City, CA",
+            "dates": "2008 - 2015",
+            "description": "Create computer animated cartoons"
+        },
+ 		{
+            "employer": "KEYT3",
+            "title": "Commercial Editor",
+            "location": "Santa Barbara, CA",
+            "dates": "2003-2005",
+            "description": "Edit television shows and commercials"
+        }
+    ]
+    
+    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	$(".work-entry:last").append(formattedLocation);
+}
+
+
+//displayWork(); 
+
+
+
+
+var displayProjects = function(){
+    "projects": [
+        {
+            "title": "Adjunct Professor",
+            "dates": "2008 - current",
+            "description": "Teach compositing to graduate students",
+            "images": ["images/ErinProfilePIC.jpg, images/ErinProfilePIC.jpg, images/ErinProfilePIC.jpg"]
+        }
+    ]
+}
+//displayProjects(); 
