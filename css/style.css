@@ -14,7 +14,7 @@
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 39px;
   color: #F5A623;
   line-height: 48px;
   display: inline;
@@ -22,7 +22,7 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 22px;
   color: #999999;
   line-height: 29px;
   padding: 10px;
@@ -37,7 +37,7 @@ h3 {
 
 h4 {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   color: #4A4A4A;
   line-height: 17px;
 }
@@ -51,7 +51,7 @@ h2, h3, h4, h5 {
 
 .date-text {
   font-style: italic;
-  font-size: 14px;
+  font-size: 13px;
   color: #999999;
   line-height: 16px;
   float: left;
@@ -59,7 +59,7 @@ h2, h3, h4, h5 {
 
 .location-text {
   font-style: italic;
-  font-size: 14px;
+  font-size: 13px;
   color: #999999;
   line-height: 16px;
   float: right;
@@ -67,7 +67,7 @@ h2, h3, h4, h5 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 13px;
   color: #333333;
   line-height: 21px;
 }
@@ -75,13 +75,13 @@ p {
 a {
   color: #1199C3;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 9px;
   display: block;
 }
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
+  font-size: 13px;
   color: #F3F3F3;
   line-height: 28px;
 }
