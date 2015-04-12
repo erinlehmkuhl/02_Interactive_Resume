@@ -93,23 +93,23 @@ var displayEducation = function(){
             var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
             var formattedDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
             var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-            $("#education").append(formattedName);
-            $("#education").append(formattedDate);
-            $("#education").append(formattedMajor);
+            $(".education-entry:last").append(formattedName);
+            $(".education-entry:last").append(formattedDate);
+            $(".education-entry:last").append(formattedMajor);
             
             } else {
             
             var formattedOLClasses = HTMLonlineClasses.replace("%data%", education.schools.onlineCourses);
-            $("#education").append(formattedOLClasses);
+            $(".education-entry:last").append(formattedOLClasses);
                 for (course in education.schools[school].onlineCourses){
                     var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools[school].onlineCourses[course].title);
                     var formattedOLSchool = HTMLonlineSchool.replace("%data%", education.schools[school].onlineCourses[course].school);
                     var formattedOLDate = HTMLonlineDates.replace("%data%", education.schools[school].onlineCourses[course].date);
                     var formattedOLUrl = HTMLonlineURL.replace("%data%", education.schools[school].onlineCourses[course].url);
                     
-                    $("#education").append(formattedOLTitle + formattedOLSchool);
-                    $("#education").append(formattedOLDate);
-                    $("#education").append(formattedOLUrl);
+                    $(".education-entry:last").append(formattedOLTitle + formattedOLSchool);
+                    $(".education-entry:last").append(formattedOLDate);
+                    $(".education-entry:last").append(formattedOLUrl);
             }
         }
     }
@@ -123,9 +123,8 @@ displayEducation();
 
 
 
-/*
 var displayWork = function(){
-    var = work {
+    var work ={
         "jobs": [
             {
                 "employer": "Academy of Art University",
@@ -149,16 +148,35 @@ var displayWork = function(){
                 "description": "Edit television shows and commercials"
             }
         ]
-        
+    }
+    
+    $("#workExperience").append(HTMLworkStart);
+    for (job in work.jobs){
+        console.log(work.jobs[job].employer);
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
         var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+        $(".work-entry:last").append(formattedEmployer + formattedTitle);
+        //$(".work-entry:last").append(formattedTitle);
+        $(".work-entry:last").append(formattedDates);
         $(".work-entry:last").append(formattedLocation);
+        $(".work-entry:last").append(formattedDescription);
     }
 }
-
-//displayWork(); 
-
+displayWork(); 
 
 
+
+
+
+
+
+
+
+
+/*
 
 var displayProjects = function(){
     "projects": [
