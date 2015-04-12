@@ -49,6 +49,11 @@ var displayBio = function(){
 displayBio();
 
 
+
+
+
+
+
 var displayEducation = function(){
     var education ={
         "schools": [
@@ -84,29 +89,39 @@ var displayEducation = function(){
 
     $("#education").append(HTMLschoolStart);
     for (school in education.schools){
-        if (education.schools[school].name !== "undefined"){
-            console.log(education.schools[school].name)
+        if (education.schools[school].onlineCourses === undefined){
             var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
             var formattedDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
             var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
             $("#education").append(formattedName);
             $("#education").append(formattedDate);
             $("#education").append(formattedMajor);
+            
             } else {
+            
             var formattedOLClasses = HTMLonlineClasses.replace("%data%", education.schools.onlineCourses);
-            //var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools.title);
-            //var formattedOLSchool = HTMLonlineSchool.replace("%data%", education.schools.onlineCourses);
-            //var formattedOLDate = HTMLonlineDates.replace("%data%", education.schools.onlineCourses.date);
-           // var formattedOLUrl = HTMLonlineURL.replace("%data%", education.schools.onlineCourses.url);
             $("#education").append(formattedOLClasses);
-            //$("#education").append(formattedOLTitle);
-            //$("#education").append(formattedOLSchool);
-           // $("#education").append(formattedOLDate);
-            //$("#education").append(formattedOLUrl);
+                for (course in education.schools[school].onlineCourses){
+                    var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools[school].onlineCourses[course].title);
+                    var formattedOLSchool = HTMLonlineSchool.replace("%data%", education.schools[school].onlineCourses[course].school);
+                    var formattedOLDate = HTMLonlineDates.replace("%data%", education.schools[school].onlineCourses[course].date);
+                    var formattedOLUrl = HTMLonlineURL.replace("%data%", education.schools[school].onlineCourses[course].url);
+                    
+                    $("#education").append(formattedOLTitle + formattedOLSchool);
+                    $("#education").append(formattedOLDate);
+                    $("#education").append(formattedOLUrl);
+            }
         }
     }
 }
 displayEducation(); 
+
+
+
+
+
+
+
 
 /*
 var displayWork = function(){
