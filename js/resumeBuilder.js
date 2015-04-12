@@ -1,3 +1,4 @@
+
 var displayBio = function(){
 	var bio = {
 		"name":"ERIN LEHMKüHL",
@@ -47,68 +48,97 @@ var displayBio = function(){
 }
 displayBio();
 
+
 var displayEducation = function(){
-    "schools": [
-        {
-            "name": "Academy of Art University",
-            "location": "San Francisco, CA",
-            "degree": "Masters of Fine Arts",
-            "majors": ["Animation and Visual Effects"],
-            "dates": 2007,
-            "url": "www.academyofart.edu"
-        },
-        {
-            "name": "University of California",
-            "location": "Santa Barbara, CA",
-            "degree": "Bachelor of Arts",
-            "majors": ["Film Studies"],
-            "dates": 2004,
-            "url": "www.ucsb.edu"
-        },
-        {
-            "onlineCourses": [
-                {
+    var education ={
+        "schools": [
+            {
+                "name": "Academy of Art University",
+                "location": "San Francisco, CA",
+                "degree": "Masters of Fine Arts",
+                "majors": ["Animation and Visual Effects"],
+                "dates": 2007,
+                "url": "www.academyofart.edu"
+            },
+            {
+                "name": "University of California",
+                "location": "Santa Barbara, CA",
+                "degree": "Bachelor of Arts",
+                "majors": ["Film Studies"],
+                "dates": 2004,
+                "url": "www.ucsb.edu"
+            },
+            {
+                "onlineCourses": [
+                    {
                     "title": "Front End Developer Nanodegree",
                     "school": "Udacity",
                     "date": 2015,
                     "url": "www.udacity.com"
-                }
-            ]
+                    }
+                ]
+            }
+        ]
+    }
+
+
+    $("#education").append(HTMLschoolStart);
+    for (school in education.schools){
+        if (education.schools[school].name !== "undefined"){
+            console.log(education.schools[school].name)
+            var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+            var formattedDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+            var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+            $("#education").append(formattedName);
+            $("#education").append(formattedDate);
+            $("#education").append(formattedMajor);
+            } else {
+            var formattedOLClasses = HTMLonlineClasses.replace("%data%", education.schools.onlineCourses);
+            //var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools.title);
+            //var formattedOLSchool = HTMLonlineSchool.replace("%data%", education.schools.onlineCourses);
+            //var formattedOLDate = HTMLonlineDates.replace("%data%", education.schools.onlineCourses.date);
+           // var formattedOLUrl = HTMLonlineURL.replace("%data%", education.schools.onlineCourses.url);
+            $("#education").append(formattedOLClasses);
+            //$("#education").append(formattedOLTitle);
+            //$("#education").append(formattedOLSchool);
+           // $("#education").append(formattedOLDate);
+            //$("#education").append(formattedOLUrl);
         }
-    ]
+    }
 }
-//displayEducation(); 
+displayEducation(); 
 
-
+/*
 var displayWork = function(){
-    "jobs": [
-        {
-            "employer": "Academy of Art University",
-            "title": "Adjunct Professor",
-            "location": "San Francisco, CA",
-            "dates": "2008 - current",
-            "description": "Teach compositing to graduate students"
-        },
-        {
-            "employer": "PDI/DreamWorks",
-            "title": "Lighter/Compositor",
-            "location": "Redwood City, CA",
-            "dates": "2008 - 2015",
-            "description": "Create computer animated cartoons"
-        },
- 		{
-            "employer": "KEYT3",
-            "title": "Commercial Editor",
-            "location": "Santa Barbara, CA",
-            "dates": "2003-2005",
-            "description": "Edit television shows and commercials"
-        }
-    ]
-    
-    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-	$(".work-entry:last").append(formattedLocation);
+    var = work {
+        "jobs": [
+            {
+                "employer": "Academy of Art University",
+                "title": "Adjunct Professor",
+                "location": "San Francisco, CA",
+                "dates": "2008 - current",
+                "description": "Teach compositing to graduate students"
+            },
+            {
+                "employer": "PDI/DreamWorks",
+                "title": "Lighter/Compositor",
+                "location": "Redwood City, CA",
+                "dates": "2008 - 2015",
+                "description": "Create computer animated cartoons"
+            },
+            {
+                "employer": "KEYT3",
+                "title": "Commercial Editor",
+                "location": "Santa Barbara, CA",
+                "dates": "2003-2005",
+                "description": "Edit television shows and commercials"
+            }
+        ]
+        
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        $(".work-entry:last").append(formattedLocation);
+    }
 }
-
 
 //displayWork(); 
 
@@ -126,3 +156,4 @@ var displayProjects = function(){
     ]
 }
 //displayProjects(); 
+*/
