@@ -152,14 +152,12 @@ var displayWork = function(){
     
     $("#workExperience").append(HTMLworkStart);
     for (job in work.jobs){
-        console.log(work.jobs[job].employer);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
         var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
         var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
         var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
         $(".work-entry:last").append(formattedEmployer + formattedTitle);
-        //$(".work-entry:last").append(formattedTitle);
         $(".work-entry:last").append(formattedDates);
         $(".work-entry:last").append(formattedLocation);
         $(".work-entry:last").append(formattedDescription);
@@ -173,20 +171,50 @@ displayWork();
 
 
 
-
-
-
-/*
-
 var displayProjects = function(){
-    "projects": [
-        {
-            "title": "Adjunct Professor",
-            "dates": "2008 - current",
-            "description": "Teach compositing to graduate students",
-            "images": ["images/ErinProfilePIC.jpg, images/ErinProfilePIC.jpg, images/ErinProfilePIC.jpg"]
+    var portfolio ={
+        "projects": [
+            {
+                "title": "Feature Films",
+                "dates": "2008 - 2015",
+                "description": "VFX Compositor and CG Lighter for thirteen feature films, four TV specials, two shorts, HBO shows and one Broadway musical over the course of eight years in the film industry.",
+                "images": ["images/GoT.jpg", "images/httyd.jpg", "images/pacific.jpg", "images/home.jpg", "images/kfp2.jpg"]
+            },
+            {
+                "title": "Art Work",
+                "dates": "2008 - 2015",
+                "description": "Metal Casting: bronze belt buckle, Carpentry: arcade cabinet, Welding: iron & wood table, Photography: long exposure.",
+                "images": ["images/beltBuckle.jpg", "images/cocktailComplete.jpg", "images/tableWelding.jpg", "images/photography.jpg"]
+            }
+        ]
+    }
+    $("#projects").append(HTMLprojectStart);
+    for (project in portfolio.projects){
+        var formattedTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].title);
+        var formattedDates = HTMLprojectDates.replace("%data%", portfolio.projects[project].dates);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
+        //var formattedImage = HTMLprojectImage.replace("%data%", portfolio.projects[project].images);
+        $(".project-entry").append(formattedTitle);
+        $(".project-entry").append(formattedDates);
+        $(".project-entry").append(formattedDescription);
+        //console.log(portfolio.projects[project].images[0]);
+        //$(".project-entry").append(formattedImage);
+        
+        for (image in portfolio.projects[project].images){
+            console.log(portfolio.projects[project].images[image]);
+            var formattedImage = HTMLprojectImage.replace("%data%", portfolio.projects[project].images[image]);
+            $(".project-entry").append(formattedImage);
         }
-    ]
+    }
 }
-//displayProjects(); 
-*/
+displayProjects(); 
+
+
+
+
+
+
+
+
+
+
