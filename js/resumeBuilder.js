@@ -1,6 +1,6 @@
 
-var displayBio = function(){
-	var bio = {
+displayBio = function(){
+	bio = {
 		"name":"ERIN LEHMKüHL",
 		"role":"web developer",
 		"contacts": {
@@ -50,12 +50,8 @@ displayBio();
 
 
 
-
-
-
-
-var displayEducation = function(){
-    var education ={
+displayEducation = function(){
+    education ={
         "schools": [
             {
                 "name": "Academy of Art University",
@@ -79,7 +75,7 @@ var displayEducation = function(){
                     "title": "Front End Developer Nanodegree",
                     "school": "Udacity",
                     "date": 2015,
-                    "url": "www.udacity.com"
+                    "url": "www.udacity.com",
                     }
                 ]
             }
@@ -88,19 +84,21 @@ var displayEducation = function(){
 
 
     $("#education").append(HTMLschoolStart);
-    for (school in education.schools){
+    for (var school in education.schools){
         if (education.schools[school].onlineCourses === undefined){
             var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
             var formattedDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+            var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
             var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
             $(".education-entry:last").append(formattedName);
             $(".education-entry:last").append(formattedDate);
+            $(".education-entry:last").append(formattedLocation);
             $(".education-entry:last").append(formattedMajor);
             
             } else {
             
             var formattedOLClasses = HTMLonlineClasses.replace("%data%", education.schools.onlineCourses);
-            $(".education-entry:last").append(formattedOLClasses);
+            $(".education-entry").append(formattedOLClasses);
                 for (course in education.schools[school].onlineCourses){
                     var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools[school].onlineCourses[course].title);
                     var formattedOLSchool = HTMLonlineSchool.replace("%data%", education.schools[school].onlineCourses[course].school);
@@ -117,14 +115,8 @@ var displayEducation = function(){
 displayEducation(); 
 
 
-
-
-
-
-
-
-var displayWork = function(){
-    var work ={
+displayWork = function(){
+    work ={
         "jobs": [
             {
                 "employer": "Academy of Art University",
@@ -134,24 +126,38 @@ var displayWork = function(){
                 "description": "Teach compositing to graduate students"
             },
             {
+                "employer": "Atomic Fiction",
+                "title": "Compositor",
+                "location": "Oakland, CA",
+                "dates": "2015",
+                "description": "Composited 'north of the wall' shots in HBO's, Game of Thrones"
+            },
+            {
                 "employer": "PDI/DreamWorks",
                 "title": "Lighter/Compositor",
                 "location": "Redwood City, CA",
                 "dates": "2008 - 2015",
-                "description": "Create computer animated cartoons"
+                "description": "Lit and composited animated cartoons like How to Train Your Dragon and Home"
+            },
+            {
+                "employer": "Digital Dream",
+                "title": "Compositor",
+                "location": "Los Angeles, CA",
+                "dates": "2009",
+                "description": "Digitally enhanced battle scenes in HBO's, The Pacific"
             },
             {
                 "employer": "KEYT3",
                 "title": "Commercial Editor",
                 "location": "Santa Barbara, CA",
                 "dates": "2003-2005",
-                "description": "Edit television shows and commercials"
+                "description": "Edited television shows and commercials for the ABC affiliate in Santa Barbara"
             }
         ]
     }
     
     $("#workExperience").append(HTMLworkStart);
-    for (job in work.jobs){
+    for (var job in work.jobs){
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
         var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
@@ -167,15 +173,11 @@ displayWork();
 
 
 
-
-
-
-
-var displayProjects = function(){
-    var portfolio ={
+displayProjects = function(){
+    portfolio ={
         "projects": [
             {
-                "title": "Feature Films",
+                "title": "Film Work",
                 "dates": "2008 - 2015",
                 "description": "VFX Compositor and CG Lighter for thirteen feature films, four TV specials, two shorts, HBO shows and one Broadway musical over the course of eight years in the film industry.",
                 "images": ["images/GoT.jpg", "images/httyd.jpg", "images/pacific.jpg", "images/home.jpg", "images/kfp2.jpg"]
@@ -189,16 +191,13 @@ var displayProjects = function(){
         ]
     }
     $("#projects").append(HTMLprojectStart);
-    for (project in portfolio.projects){
+    for (var project in portfolio.projects){
         var formattedTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].title);
         var formattedDates = HTMLprojectDates.replace("%data%", portfolio.projects[project].dates);
         var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
-        //var formattedImage = HTMLprojectImage.replace("%data%", portfolio.projects[project].images);
         $(".project-entry").append(formattedTitle);
         $(".project-entry").append(formattedDates);
         $(".project-entry").append(formattedDescription);
-        //console.log(portfolio.projects[project].images[0]);
-        //$(".project-entry").append(formattedImage);
         
         for (image in portfolio.projects[project].images){
             console.log(portfolio.projects[project].images[image]);
@@ -206,10 +205,50 @@ var displayProjects = function(){
             $(".project-entry").append(formattedImage);
         }
     }
+
 }
 displayProjects(); 
 
 
+
+$("#mapDiv").append(googleMap);
+
+
+displayFooter= function(){
+    var HTMLfooterStart = '<div id="divFooter" class="footer-entry"></div>';
+    $("#footerContacts").append(HTMLfooterStart);
+
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+    $(".footer-entry:last").append(formattedMobile);
+    $(".footer-entry:last").append(formattedEmail);
+    $(".footer-entry:last").append(formattedGitHub);
+    $(".footer-entry:last").append(formattedTwitter);
+    $(".footer-entry:last").append(formattedLocation);
+};
+displayFooter();
+
+
+
+
+
+
+var inName = function(name){
+    console.log(name);
+    name = name.split(" ");
+    firstFirst = name[0][0].toUpperCase();
+    firstRest = name[0].toLowerCase();
+
+    firstName = firstFirst + firstRest.slice(1);
+    lastName = name[1].toUpperCase();
+
+    return firstName + " " + lastName;
+}
+$("#main").append(internationalizeButton);
 
 
 

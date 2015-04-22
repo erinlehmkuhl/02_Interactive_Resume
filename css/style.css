@@ -28,12 +28,14 @@ h2 {
   padding: 10px;
 }
 
+/*
 h3 {
   font-style: italic;
   font-size: 20px;
   color: #000000;
   line-height: 22px;
 }
+*/
 
 h4 {
   font-weight: bold;
@@ -43,7 +45,7 @@ h4 {
 }
 
 h2, h3, h4, h5 {
-  padding:10px;
+  /*padding:10px;*/
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -142,7 +144,8 @@ ul {
 .biopic {
   float: left;
   padding: 10px;
-  width: 200px;
+  padding-left: 0px;
+  width: 120px;
   display: none;
 }
 
@@ -162,12 +165,28 @@ img {
   display: inline-block;
 }
 
+#workDesc{
+  padding-left:3em;
+  padding-bottom: 2em;
+}
+
 span {
   padding: 5px;
 }
 
 #letsConnect {
   text-align: center;
+}
+
+#divFooter{
+  display: -webkit-box;
+  font-size: 13px;
+}
+
+#onlineClasses{
+  padding-left: 0px;
+  padding-top:40px;
+  color: #999999;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -178,7 +197,7 @@ span {
 
 @media only screen and (max-width:900px) {
   .biopic {
-    width: 175px;
+    width: 108px;
   }
 }
 
@@ -187,7 +206,7 @@ span {
     margin-top: 10%;
   }
   .biopic {
-    width: 150px;
+    width: 108px;
   }
   .welcome-message {
     display: none;
@@ -211,5 +230,6 @@ span {
   #skillsH3,
   .biopic {
     display: block;
+    padding-top: 11px;
   }
 }
