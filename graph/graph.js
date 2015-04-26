@@ -2,47 +2,47 @@ var data=[
   {
     "date": "20070601",
     "RWC Rent": "2060",
-    "Erin's 1/3 Net": "1127"
+    "Erin's 1/3 Net": "1170"
   },
   {
     "date": "20080601",
     "RWC Rent": "2060",
-    "Erin's 1/3 Net": "1997"
+    "Erin's 1/3 Net": "1891"
   },
   {
     "date": "20090601",
     "RWC Rent": "1800",
-    "Erin's 1/3 Net": "1997"
+    "Erin's 1/3 Net": "1891"
   },
   {
     "date": "20100601",
     "RWC Rent": "1830",
-    "Erin's 1/3 Net": "1997"
+    "Erin's 1/3 Net": "1891"
   },
   {
     "date": "20110601",
     "RWC Rent": "1750",
-    "Erin's 1/3 Net": "1997"
+    "Erin's 1/3 Net": "1891"
   },
   {
     "date": "20120601",
     "RWC Rent": "1820",
-    "Erin's 1/3 Net": "1927"
+    "Erin's 1/3 Net": "1836"
   },
   {
     "date": "20130601",
     "RWC Rent": "2240",
-    "Erin's 1/3 Net": "1927"
+    "Erin's 1/3 Net": "1836"
   },
   {
     "date": "20140601",
     "RWC Rent": "2510",
-    "Erin's 1/3 Net": "1997"
+    "Erin's 1/3 Net": "1891"
   },
   {
     "date": "20150601",
     "RWC Rent": "2850",
-    "Erin's 1/3 Net": "2097"
+    "Erin's 1/3 Net": "1974"
   }];
 
 responsivefy = function (svg) {
@@ -81,30 +81,26 @@ salaryGame = function(){
   }else if(inputSalary < 50000){
     alert("sorry, you're not even in the ballpark")
   }else if(inputSalary>115836){
-    alert("congratulations, you're off the chart! You can afford to live in half of a two-bedroom house. Why don't you use all that extra cash and work for DreamWorks!")
+    alert("congratulations, you're off the chart!" +
+    " You can afford to live in one bedroom of a two-bedroom house." +
+    " Why don't you use all that extra cash and work for DreamWorks!")
   }else{
     inputSalary = inputSalary/12;//monthly income
     inputSalary = inputSalary-(533+120);//533 is for 401k, 120 is medical, etc
     inputSalary = inputSalary*(.333);//one third is the limit for spending on housing
-    console.log(inputSalary);
 
+    var adjustedHeight = d3.scale.linear()
+      .domain([2850, 1170])
+      .range([(height), 0]);
+    
+    var scaledInputSalary = adjustedHeight(inputSalary);
 
-  var city = svg.selectAll(".city")
-      .data([])
-    .enter().append("g")
-
-  city.append("path")
-      .attr("class", "line")
-      .attr("d", function(d) { return line(d.values); })
-      .style("stroke", function(d) { return color(d.name); });
-
-  city.append("text")
-      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.prices) + ")"; })
-      .attr("x", 3)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.name; });
-
+    d3.selectAll("#attachment")
+      .append("circle")
+      .attr("class", "circle")
+      .attr("cx", (width-6))
+      .attr("cy", -scaledInputSalary)
+      .attr("r", 5)
     }
 }
 
@@ -142,57 +138,55 @@ var svg = d3.select("#graph").append("svg")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-//historical data for salary and housing costs
-d3.tsv("https://gist.githubusercontent.com/erinlehmkuhl/72a7659cd6734b2714f2/raw/13e7290dc909a63111a704bacddfe8ef25bf4193/data.tsv", function(error, data) {
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
 
-  data.forEach(function(d) {
-    d.date = parseDate(d.date);
-    //console.log(d.date);
-  });
+
+color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+
+data.forEach(function(d) {
+  d.date = parseDate(d.date);
+});
   
-  var rates = color.domain().map(function(name) {
-    return {
-      name: name, values: data.map(function(d) {return {date: d.date, prices: +d[name]};})
-    };
-  });
+var rates = color.domain().map(function(name) {
+  return {
+    name: name, values: data.map(function(d) {return {date: d.date, prices: +d[name]};})
+  };
+});
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+x.domain(d3.extent(data, function(d) { return d.date; }));
 
-  y.domain([
-    d3.min(rates, function(c) { return d3.min(c.values, function(v) { return v.prices; }); }),
-    d3.max(rates, function(c) { return d3.max(c.values, function(v) { return v.prices; }); })
-  ]);
+y.domain([
+  d3.min(rates, function(c) { return d3.min(c.values, function(v) { return v.prices; }); }),
+  d3.max(rates, function(c) { return d3.max(c.values, function(v) { return v.prices; }); })
+]);
 
-  svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("id", "attachment")
+  .attr("transform", "translate(0," + height + ")")
+  .call(xAxis)
 
-  svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("dollars");
+svg.append("g")
+  .attr("class", "y axis")
+  .call(yAxis)
+  .append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 6)
+  .attr("dy", ".71em")
+  .style("text-anchor", "end")
+  .text("dollars");
 
-  var city = svg.selectAll(".city")
-    .data(rates)
-    .enter().append("g")
+var graphArea = svg.selectAll(".graphArea")
+  .data(rates)
+  .enter().append("g")
 
-  city.append("path")
-    .attr("class", "line")
-    .attr("d", function(d) { return line(d.values); })
-    .style("stroke", function(d) { return color(d.name); });
+graphArea.append("path")
+  .attr("class", "line")
+  .attr("d", function(d) { return line(d.values); })
+  .style("stroke", function(d) { return color(d.name); });
 
-  city.append("text")
-    .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-    .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.prices) + ")"; })
-    .attr("x", 3)
-    .attr("dy", ".35em")
-    .text(function(d) { return d.name; });
-}); 
-
+graphArea.append("text")
+  .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+  .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.prices) + ")"; })
+  .attr("x", 3)
+  .attr("dy", ".35em")
+  .text(function(d) { return d.name; });
