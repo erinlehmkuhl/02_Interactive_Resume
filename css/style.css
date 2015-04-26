@@ -1,7 +1,36 @@
 * {
   padding:0;
   margin:0;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-family: 'Roboto', sans-serif;
+}
+
+#graph {
+  padding:0;
+  margin:0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 5px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke: #999999;
+  stroke-width: 1px;
+}
+
+.circle{
+  color: purple;
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
 }
 
 .clearfix {
@@ -28,14 +57,16 @@ h2 {
   padding: 10px;
 }
 
-/*
-h3 {
+
+#why {
   font-style: italic;
-  font-size: 20px;
+  font-size: 15px;
   color: #000000;
-  line-height: 22px;
+  line-height: 0px;
+  text-align: center;
+
 }
-*/
+
 
 h4 {
   font-weight: bold;
@@ -45,9 +76,11 @@ h4 {
 }
 
 h2, h3, h4, h5 {
-  /*padding:10px;*/
   padding-left: 5%;
   padding-right: 5%;
+  font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 
@@ -66,6 +99,11 @@ h2, h3, h4, h5 {
   line-height: 16px;
   float: right;
 
+}
+#ability
+{
+  margin-top: 15px;
+  text-align: center;
 }
 
 p {
@@ -116,7 +154,6 @@ a {
   background-color: #4A4A4A;
 }
 
-/* TODO: Replace with image later */
 #header {
   background-color: #484848;
 }
@@ -153,25 +190,14 @@ img {
   padding: 10px;
 }
 
-/* Bar chart stuff */
-.chart div {
-  font: 10px sans-serif;
-  background-color: #4A4A4A;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  height: 12px;
-  color: white;
-  display: inline-block;
-}
 
 #workDesc{
   padding-left:3em;
-  padding-bottom: 2em;
 }
 
 span {
   padding: 5px;
+    color: #000000;
 }
 
 #letsConnect {
@@ -187,6 +213,11 @@ span {
   padding-left: 0px;
   padding-top:40px;
   color: #999999;
+}
+
+#tryIt{
+
+  justify-content: right;
 }
 
 @media only screen and (max-width: 1024px) {

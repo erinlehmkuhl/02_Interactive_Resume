@@ -200,7 +200,6 @@ displayProjects = function(){
         $(".project-entry").append(formattedDescription);
         
         for (image in portfolio.projects[project].images){
-            console.log(portfolio.projects[project].images[image]);
             var formattedImage = HTMLprojectImage.replace("%data%", portfolio.projects[project].images[image]);
             $(".project-entry").append(formattedImage);
         }
@@ -212,6 +211,7 @@ displayProjects();
 
 
 $("#mapDiv").append(googleMap);
+
 
 
 displayFooter= function(){
@@ -231,9 +231,6 @@ displayFooter= function(){
     $(".footer-entry:last").append(formattedLocation);
 };
 displayFooter();
-
-
-
 
 
 
