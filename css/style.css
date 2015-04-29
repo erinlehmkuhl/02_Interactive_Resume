@@ -4,6 +4,7 @@
   margin-top: 0px;
   margin-bottom: 0px;
   font-family: 'Roboto', sans-serif;
+  color: #E7450D;
 }
 
 #graph {
@@ -16,23 +17,21 @@
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #3F362A;
   shape-rendering: crispEdges;
 }
 
 .line {
   fill: none;
-  stroke: #999999;
+  stroke: #3F362A;
   stroke-width: 1px;
 }
 
 .circle{
-  fill: purple;
+  fill: #E7450D;
 }
 
 .bubbleText{
-  font-size: 600px;
-  color: black;
 }
 
 .clearfix {
@@ -46,26 +45,25 @@
 
 h1 {
   font-size: 39px;
-  color: #F5A623;
   line-height: 48px;
   display: inline;
+  color: #FA9D04;
 }
 
 h2 {
   font-weight: bold;
   font-size: 22px;
-  color: #999999;
   line-height: 29px;
-  padding: 10px;
+  padding: 1%;
 }
 
 
 #why {
   font-style: italic;
-  font-size: 15px;
-  color: #000000;
+  font-size: 23px;
   line-height: 0px;
   text-align: center;
+  margin-top: 6%;
 
 }
 
@@ -73,7 +71,6 @@ h2 {
 h4 {
   font-weight: bold;
   font-size: 13px;
-  color: #4A4A4A;
   line-height: 17px;
 }
 
@@ -89,19 +86,23 @@ h2, h3, h4, h5 {
 .date-text {
   font-style: italic;
   font-size: 13px;
-  color: #999999;
   line-height: 16px;
   float: left;
+  color: #3F362A;
 }
 
 .location-text {
   font-style: italic;
   font-size: 13px;
-  color: #999999;
   line-height: 16px;
   float: right;
-
+   color: #3F362A;
 }
+
+.major-text {
+  color: #3F362A;
+}
+
 #ability
 {
   margin-top: 15px;
@@ -110,54 +111,61 @@ h2, h3, h4, h5 {
 
 p {
   font-size: 13px;
-  color: #333333;
   line-height: 21px;
+  color: #3F362A;
 }
 
 a {
-  color: #1199C3;
   text-decoration: none;
   margin-top: 9px;
   display: block;
+  color: #FA9D04;
+;
 }
 
 .welcome-message {
   font-style: italic;
   font-size: 13px;
-  color: #F3F3F3;
-  line-height: 28px;
+  color: #FA9D04;
+  padding: 0px;
+  line-height: 37px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
-  display: none;
 }
 
 .orange {
-  background-color: #F5AE23;
+  background-color: #FA9D04;
 }
 
 .orange-text {
-  color: #F5AE23;
+  /*color: #3F362A;*/
 }
 
 .white-text {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #FEF596;
+}
+
+span {
+  padding: 5px;
+}
+
+.cleanup{
 }
 
 .gray {
-  background-color: #F3F3F3;
-  padding-bottom: 10px;
+  /*background-color: #FEF596;*/
+  /*padding-bottom: 10px;*/
   clear:both;
 }
 
 .dark-gray {
-  background-color: #4A4A4A;
+  background-color: #3F362A;
 }
 
 #header {
-  background-color: #484848;
+  background-color: #3F362A;
 }
 
 .flex-box {
@@ -185,7 +193,7 @@ ul {
   padding: 10px;
   padding-left: 0px;
   width: 135px;
-  display: none;
+  /*display: none;*/
 }
 
 img {
@@ -197,15 +205,14 @@ img {
   padding-left:3em;
 }
 
-span {
-  padding: 5px;
-    color: #000000;
+hr{
+  border-color: black;
+  color:black;
 }
 
 .skills{
   display: none;
   font-weight: bold;
-  color: #FFFFFF;
 }
 
 #letsConnect {
@@ -220,36 +227,15 @@ span {
 #onlineClasses{
   padding-left: 0px;
   padding-top:40px;
-  color: #999999;
+}
+
+.onlineUrl-text{
+  color:#3F362A;
 }
 
 #tryIt{
 
   justify-content: right;
-}
-
-@media only screen and (max-width: 1024px) {
-  #letsConnect {
-    margin-top: 5%;
-  }
-}
-
-@media only screen and (max-width:900px) {
-  .biopic {
-    width: 123px;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  #letsConnect {
-    margin-top: 10%;
-  }
-  .biopic {
-    width: 108px;
-  }
-  .welcome-message {
-    display: none;
-  }
 }
 
 #map {
@@ -262,14 +248,31 @@ span {
 #mapDiv {
   height: 400px;
   width: 100%;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
 }
 
-@media only screen and (min-width: 750px) {
-  .skills,
-  #skillsH3,
+@media only screen and (max-width: 767px) {
+
+  .welcome-message {
+  font-size: 11px;
+  line-height: 13px;
+  }
   .biopic {
     display: block;
-    padding-top: 11px;
+    padding-top: 0px;
+    width:84px;
+  }
+  h1{
+    font-size: 33px;
+  }
+  span{
+    padding: 3px;
+  }
+  hr{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .cleanup{
+    display: none;
   }
 }

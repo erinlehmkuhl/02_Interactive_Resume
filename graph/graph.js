@@ -2,47 +2,47 @@ var data=[
   {
     "date": "20070601",
     "RWC Rent": "2060",
-    "Erin's 1/3 Net": "1170"
+    "My Rent Budget": "1170"
   },
   {
     "date": "20080601",
     "RWC Rent": "2060",
-    "Erin's 1/3 Net": "1891"
+    "My Rent Budget": "1891"
   },
   {
     "date": "20090601",
     "RWC Rent": "1800",
-    "Erin's 1/3 Net": "1891"
+    "My Rent Budget": "1891"
   },
   {
     "date": "20100601",
     "RWC Rent": "1830",
-    "Erin's 1/3 Net": "1891"
+    "My Rent Budget": "1891"
   },
   {
     "date": "20110601",
     "RWC Rent": "1750",
-    "Erin's 1/3 Net": "1891"
+    "My Rent Budget": "1891"
   },
   {
     "date": "20120601",
     "RWC Rent": "1820",
-    "Erin's 1/3 Net": "1836"
+    "My Rent Budget": "1836"
   },
   {
     "date": "20130601",
     "RWC Rent": "2240",
-    "Erin's 1/3 Net": "1836"
+    "My Rent Budget": "1836"
   },
   {
     "date": "20140601",
     "RWC Rent": "2510",
-    "Erin's 1/3 Net": "1891"
+    "My Rent Budget": "1891"
   },
   {
     "date": "20150601",
     "RWC Rent": "2850",
-    "Erin's 1/3 Net": "1974"
+    "My Rent Budget": "1974"
   }];
 
 responsivefy = function (svg) {
@@ -79,15 +79,15 @@ salaryGame = function(){
   if (isNaN(inputSalary)){
     alert("Please use a whole number");
   }else if(inputSalary < 50000){
-    alert("sorry, you're not even in the ballpark")
+    alert("sorry, i've been there.")
   }else if(inputSalary>115836){
-    alert("congratulations, you're off the chart!" +
-    " You can afford to live in one bedroom of a two-bedroom house." +
-    " Why don't you use all that extra cash and work for DreamWorks!")
+    alert("congratulations, you're off the chart!")
   }else{
     inputSalary = inputSalary/12;//monthly income
     inputSalary = inputSalary-(533+120);//533 is for 401k, 120 is medical, etc
     inputSalary = inputSalary*(.333);//one third is the limit for spending on housing
+
+
 
     var adjustedHeight = d3.scale.linear()
       .domain([2850, 1170])
@@ -95,14 +95,39 @@ salaryGame = function(){
     
     var scaledInputSalary = adjustedHeight(inputSalary);
 
-    d3.selectAll("#attachment")
+    var yourCircle = d3.select("#attachment")
       .append("circle")
       .attr("class", "circle")
       .attr("cx", (width-6))
       .attr("cy", -scaledInputSalary)
-      .attr("r", 5)
+      .attr("r", 5);
+    console.log(inputSalary);
+    
+    if (inputSalary < 1900){
+      var yourText = d3.select("#attachment")
+        .append("text")
+        .attr("class", "bubbleText")
+        .attr("x", (width-35))
+        .attr("y", -scaledInputSalary)
+        .text("oh, shoot!");
+    }else if( inputSalary > 2800){
+      var yourText = d3.select("#attachment")
+        .append("text")
+        .attr("class", "bubbleText")
+        .attr("x", (width-35))
+        .attr("y", -scaledInputSalary)
+        .text("livin' large!");    
+    }else{
+      var yourText = d3.select("#attachment")
+        .append("text")
+        .attr("class", "bubbleText")
+        .attr("x", (width-43))
+        .attr("y", -scaledInputSalary)
+        .text("getting close!");
     }
+  }
 }
+
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
   width = 400 - margin.left - margin.right,
@@ -116,7 +141,7 @@ var x = d3.time.scale()
 var y = d3.scale.linear()
   .range([height, 0]);
 
-var color = d3.scale.category20c();
+var color = d3.scale.category20b();
 
 var xAxis = d3.svg.axis()
   .scale(x)
@@ -137,7 +162,6 @@ var svg = d3.select("#graph").append("svg")
   .call(responsivefy)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 
 
 color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
@@ -190,3 +214,11 @@ graphArea.append("text")
   .attr("x", 3)
   .attr("dy", ".35em")
   .text(function(d) { return d.name; });
+
+//add in description and button
+var HTMLgraphDescription = '<p id="ability" > Price of a bedroom in a two-bedroom house vs your housing budget (1/3 net income)</p>';
+var HTMLgraphButton = '<button id="tryIt" onclick="salaryGame()">Try it</button>';
+$("#graph").prepend(HTMLgraphDescription);
+$("#ability").append(HTMLgraphButton);
+
+

@@ -12,7 +12,7 @@ displayBio = function(){
 		},
 		"welcomeMsg": "'uva uvam vivendo varia fit' - Hat Creek Cattle Company",
 		"skills": ["nunchuck", "bo staff", "computer hacking"],
-		"pic": "images/ErinProfilePIC.jpg"
+		"pic": "images/ErinProfilePIC70s.png"
 	}
 
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -59,7 +59,7 @@ displayEducation = function(){
                 "degree": "Masters of Fine Arts",
                 "majors": ["Animation and Visual Effects"],
                 "dates": 2007,
-                "url": "www.academyofart.edu"
+                "url": "http://www.academyart.edu"
             },
             {
                 "name": "University of California",
@@ -67,7 +67,7 @@ displayEducation = function(){
                 "degree": "Bachelor of Arts",
                 "majors": ["Film Studies"],
                 "dates": 2004,
-                "url": "www.ucsb.edu"
+                "url": "http://www.ucsb.edu"
             },
             {
                 "onlineCourses": [
@@ -76,6 +76,7 @@ displayEducation = function(){
                     "school": "Udacity",
                     "date": 2015,
                     "url": "www.udacity.com",
+                    "urlCourse": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
                     }
                 ]
             }
@@ -86,11 +87,12 @@ displayEducation = function(){
     $("#education").append(HTMLschoolStart);
     for (var school in education.schools){
         if (education.schools[school].onlineCourses === undefined){
-            var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+            var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name).replace("#", education.schools[school].url);
             var formattedDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
             var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
             var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-            $(".education-entry:last").append(formattedName);
+            var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+            $(".education-entry:last").append(formattedName + formattedDegree);
             $(".education-entry:last").append(formattedDate);
             $(".education-entry:last").append(formattedLocation);
             $(".education-entry:last").append(formattedMajor);
@@ -100,10 +102,10 @@ displayEducation = function(){
             var formattedOLClasses = HTMLonlineClasses.replace("%data%", education.schools.onlineCourses);
             $(".education-entry").append(formattedOLClasses);
                 for (course in education.schools[school].onlineCourses){
-                    var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools[school].onlineCourses[course].title);
+                    var formattedOLTitle = HTMLonlineTitle.replace("%data%", education.schools[school].onlineCourses[course].title).replace("#", education.schools[school].onlineCourses[course].url);
                     var formattedOLSchool = HTMLonlineSchool.replace("%data%", education.schools[school].onlineCourses[course].school);
                     var formattedOLDate = HTMLonlineDates.replace("%data%", education.schools[school].onlineCourses[course].date);
-                    var formattedOLUrl = HTMLonlineURL.replace("%data%", education.schools[school].onlineCourses[course].url);
+                    var formattedOLUrl = HTMLonlineURL.replace("%data%", education.schools[school].onlineCourses[course].url).replace("#", education.schools[school].onlineCourses[course].urlCourse);
                     
                     $(".education-entry:last").append(formattedOLTitle + formattedOLSchool);
                     $(".education-entry:last").append(formattedOLDate);
@@ -123,42 +125,47 @@ displayWork = function(){
                 "title": "Adjunct Professor",
                 "location": "San Francisco, CA",
                 "dates": "2008 - current",
-                "description": "Teach compositing to graduate students"
+                "description": "Teach compositing to graduate students",
+                "url": "http://www.academyart.edu"
             },
             {
                 "employer": "Atomic Fiction",
                 "title": "Compositor",
                 "location": "Oakland, CA",
                 "dates": "2015",
-                "description": "Composited 'north of the wall' shots in HBO's, Game of Thrones"
+                "description": "Composited 'north of the wall' shots in HBO's, Game of Thrones",
+                "url": "http://www.atomicfiction.com"
             },
             {
                 "employer": "PDI/DreamWorks",
                 "title": "Lighter/Compositor",
                 "location": "Redwood City, CA",
                 "dates": "2008 - 2015",
-                "description": "Lit and composited animated cartoons like How to Train Your Dragon and Home"
+                "description": "Lit and composited scenes from CG films such as How to Train Your Dragon and Puss in Boots.",
+                "url": "http://www.dreamworks.com"
             },
             {
                 "employer": "Digital Dream",
                 "title": "Compositor",
                 "location": "Los Angeles, CA",
                 "dates": "2009",
-                "description": "Digitally enhanced battle scenes in HBO's, The Pacific"
+                "description": "Digitally enhanced battle scenes in HBO's, The Pacific",
+                "url": "http://www.imdb.com/company/co0140281/"
             },
             {
                 "employer": "KEYT3",
                 "title": "Commercial Editor",
                 "location": "Santa Barbara, CA",
                 "dates": "2003-2005",
-                "description": "Edited television shows and commercials for the ABC affiliate in Santa Barbara"
+                "description": "Edited television shows and commercials for the ABC affiliate in Santa Barbara",
+                "url": "http://www.keyt.com"
             }
         ]
     }
     
     $("#workExperience").append(HTMLworkStart);
     for (var job in work.jobs){
-        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer).replace("#", work.jobs[job].url);
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
         var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
         var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
@@ -179,20 +186,23 @@ displayProjects = function(){
             {
                 "title": "Film Work",
                 "dates": "2008 - 2015",
-                "description": "VFX Compositor and CG Lighter for thirteen feature films, four TV specials, two shorts, HBO shows and one Broadway musical over the course of eight years in the film industry.",
-                "images": ["images/GoT.jpg", "images/httyd.jpg", "images/pacific.jpg", "images/home.jpg", "images/kfp2.jpg"]
+                "description": "VFX Compositor and CG Lighter for thirteen feature films, four TV specials, two award winning shorts, two HBO shows and one Broadway musical.",
+                "images": ["images/GoT.jpg", "images/httyd.jpg", "images/pacific.jpg", "images/home.jpg", "images/kfp2.jpg"],
+                "url": "http://www.imdb.com/name/nm1425351/?ref_=fn_al_nm_1"
+
             },
             {
                 "title": "Art Work",
                 "dates": "2008 - 2015",
-                "description": "Metal Casting: bronze belt buckle, Carpentry: arcade cabinet, Welding: iron & wood table, Photography: long exposure.",
-                "images": ["images/beltBuckle.jpg", "images/cocktailComplete.jpg", "images/tableWelding.jpg", "images/photography.jpg"]
+                "description": "Metal Casting, Carpentry, Welding, Photography.",
+                "images": ["images/beltBuckle.jpg", "images/cocktailComplete.jpg", "images/tableWelding.jpg", "images/photography.jpg"],
+                "url": "http://www.lehmkuhlfx.com"
             }
         ]
     }
     $("#projects").append(HTMLprojectStart);
     for (var project in portfolio.projects){
-        var formattedTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].title);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].title).replace("#", portfolio.projects[project].url);
         var formattedDates = HTMLprojectDates.replace("%data%", portfolio.projects[project].dates);
         var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
         $(".project-entry").append(formattedTitle);
@@ -215,7 +225,7 @@ $("#mapDiv").append(googleMap);
 
 
 displayFooter= function(){
-    var HTMLfooterStart = '<div id="divFooter" class="footer-entry"></div>';
+    var HTMLfooterStart = '<ul class="flex-box footer-entry"></ul>';
     $("#footerContacts").append(HTMLfooterStart);
 
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
