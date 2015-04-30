@@ -7,11 +7,11 @@ displayBio = function(){
 			"mobile": "415-730-7330",
 			"email": "erinlehmkuhl@gmail.com",
 			"github": "erinlehmkuhl",
-			"twitter": "erinlehmkuhl",
+			"IMDB": "erin lehmkühl",
 			"location": "Redwood City"
 		},
 		"welcomeMsg": "'uva uvam vivendo varia fit' - Hat Creek Cattle Company",
-		"skills": ["nunchuck", "bo staff", "computer hacking"],
+		"skills": ["visual effects", "web design", "waterskiing"],
 		"pic": "images/ErinProfilePIC70s.png"
 	}
 
@@ -20,15 +20,15 @@ displayBio = function(){
 	var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
 	var formattedWelMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 	var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
-	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	var formattedIMDB = HTMLIMDB.replace("%data%", bio.contacts.IMDB);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
 	$("#topContacts").append(formattedMobile);
 	$("#topContacts").append(formattedEmail);
-	$("#topContacts").append(formattedGitHub);
-	$("#topContacts").append(formattedTwitter);
+    $("#topContacts").append(formattedGitHub);
+	$("#topContacts").append(formattedIMDB);
 	$("#topContacts").append(formattedLocation);	
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
@@ -231,13 +231,13 @@ displayFooter= function(){
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
     var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    var formattedIMDB = HTMLIMDB.replace("%data%", bio.contacts.IMDB);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
     $(".footer-entry:last").append(formattedMobile);
     $(".footer-entry:last").append(formattedEmail);
     $(".footer-entry:last").append(formattedGitHub);
-    $(".footer-entry:last").append(formattedTwitter);
+    $(".footer-entry:last").append(formattedIMDB);
     $(".footer-entry:last").append(formattedLocation);
 };
 displayFooter();

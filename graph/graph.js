@@ -128,6 +128,7 @@ salaryGame = function(){
   }
 }
 
+$('#graph').addClass("collapse in");
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
   width = 400 - margin.left - margin.right,
@@ -206,7 +207,13 @@ var graphArea = svg.selectAll(".graphArea")
 graphArea.append("path")
   .attr("class", "line")
   .attr("d", function(d) { return line(d.values); })
-  .style("stroke", function(d) { return color(d.name); });
+  .style("stroke", function(d) { 
+    if (d.name === "RWC Rent") {
+      return "#3F362A";
+    }else{
+      return "#FA9D04";
+    }
+  });
 
 graphArea.append("text")
   .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })

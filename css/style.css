@@ -43,6 +43,11 @@
   padding-right: 5%;
 }
 
+.backInLine{
+  display: initial;
+
+}
+
 h1 {
   font-size: 39px;
   line-height: 48px;
